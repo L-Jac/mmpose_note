@@ -27,3 +27,9 @@ wget https://download.openmmlab.com/mmcv/dist/cu121/torch2.1.0/mmcv-2.1.0-cp311-
   
 pip install mmcv-2.1.0-cp311-cp311-manylinux1_x86_64.whl 
 ```
+## 验证安装
+```bash
+mim download mmpose --config td-hm_hrnet-w48_8xb32-210e_coco-256x192  --dest .  
+
+python demo/image_demo.py tests/data/coco/000000000785.jpg td-hm_hrnet-w48_8xb32-210e_coco-256x192.py td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth --out-file vis_results.jpg --draw-heatmap
+```
