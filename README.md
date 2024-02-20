@@ -1,4 +1,5 @@
-# mmpos_note
+# MMPose_Note
+# 基于manjaro
 [官方文档](https://mmpose.readthedocs.io/zh-cn/latest/installation.html)
 
 ## 挂代理
@@ -33,3 +34,32 @@ mim download mmpose --config td-hm_hrnet-w48_8xb32-210e_coco-256x192  --dest .
 
 python demo/image_demo.py tests/data/coco/000000000785.jpg td-hm_hrnet-w48_8xb32-210e_coco-256x192.py td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth --out-file vis_results.jpg --draw-heatmap
 ```
+
+# 模型部署
+[MMdeploy](https://mmdeploy.readthedocs.io/zh-cn/latest/01-how-to-build/build_from_source.html)
+```bash
+git clone https://github.com/open-mmlab/mmdeploy --recursive 
+或
+git clone -b main https://github.com/open-mmlab/mmdeploy.git MMDeploy
+cd MMDeploy
+git submodule update --init --recursive
+安装
+mim install -e .
+```
+[Tensorrt](https://aur.archlinux.org/packages/tensorrt)
+```bash
+paru -S tensorrt
+```
+## 模型导出
+onnxruntime
+```bash
+python tools/deploy.py configs/mmpose/pose-detection_simcc_onnxruntime_dynamic.py ../mmpose/projects/rtmpose/rtmpose/body_2d_keypoint/rtmpose-m_8xb256-420e_coco-256x192.py https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_simcc-aic-coco_pt-aic-coco_420e-256x192-63eb25f7_20230126.pth demo/resources/human-pose.jpg --work-dir rtmpose-ort/rtmpose-m --device cpu --show --dump-info   
+    # 导出 sdk info
+```
+
+TensorRT
+```bash
+python tools/deploy.py configs/mmpose/pose-detection_simcc_tensorrt_dynamic-256x192.py ../mmpose/projects/rtmpose/rtmpose/body_2d_keypoint/rtmpose-m_8xb256-420e_coco-256x192.py https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_simcc-aic-coco_pt-aic-coco_420e-256x192-63eb25f7_20230126.pth demo/resources/human-pose.jpg --work-dir rtmpose-trt/rtmpose-m --device cuda:0 --show --dump-info   
+# 导出 sdk info
+```
+
