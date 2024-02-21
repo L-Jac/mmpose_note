@@ -2,6 +2,10 @@
 # 基于manjaro
 [官方文档](https://mmpose.readthedocs.io/zh-cn/latest/installation.html)
 
+## Docker(彻底的环境隔离)  
+[安装及使用指导](https://www.runoob.com/docker/docker-command-manual.html)  
+[DockerHub（镜像下载）](https://hub.docker.com/)
+
 ## 挂代理
 . ~/proxy.sh
 ```bash
