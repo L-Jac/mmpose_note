@@ -20,7 +20,7 @@ python -c 'import torch;print(torch.__version__)'
 ## MMCV 建议找轮子
 [MMCV安装文档](https://mmcv.readthedocs.io/en/latest/get_started/installation.html)
 
-[MMCV轮子库](https://download.openmmlab.com/mmcv/dist/cu121/torch2.1/index.html)
+![MMCV找轮子](image\image1.png)
 
 示例
 ```bash
