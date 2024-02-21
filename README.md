@@ -1,10 +1,15 @@
 # MMPose_Note
 # 基于manjaro
-[官方文档](https://mmpose.readthedocs.io/zh-cn/latest/installation.html)
+[mmpose官方文档](https://mmpose.readthedocs.io/zh-cn/latest/installation.html)
 
-## Docker(彻底的环境隔离)  
-[安装及使用指导](https://www.runoob.com/docker/docker-command-manual.html)  
-[DockerHub（镜像下载）](https://hub.docker.com/)
+## pip使用国内源
+
+```bash
+##临时
+pip install xxx -i https://mirrors.163.com/pypi/simple
+##永久
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ## 挂代理
 . ~/proxy.sh
@@ -14,6 +19,10 @@ PORT=7890
 export http_proxy="http://$HOST:$PORT"
 export https_proxy="http://$HOST:$PORT"
 ```
+## Docker(彻底的环境隔离)  
+[安装及使用指导](https://www.runoob.com/docker/docker-command-manual.html)  
+[DockerHub（镜像下载）](https://hub.docker.com/)
+
 ## Pytorch
 [Pytorch](https://pytorch.org/)  
 验证
@@ -28,9 +37,9 @@ python -c 'import torch;print(torch.__version__)'
 
 示例
 ```bash
-wget https://download.openmmlab.com/mmcv/dist/cu121/torch2.1.0/mmcv-2.1.0-cp311-cp311-manylinux1_x86_64.whl  
+wget https://download.openmmlab.com/mmcv/dist/cu118/torch2.1.0/mmcv-2.1.0-cp310-cp310-manylinux1_x86_64.whl  
   
-pip install mmcv-2.1.0-cp311-cp311-manylinux1_x86_64.whl 
+pip install mmcv-2.1.0-cp310-cp310-manylinux1_x86_64.whl 
 ```
 ## 验证安装
 ```bash
@@ -39,7 +48,7 @@ mim download mmpose --config td-hm_hrnet-w48_8xb32-210e_coco-256x192  --dest .
 python demo/image_demo.py tests/data/coco/000000000785.jpg td-hm_hrnet-w48_8xb32-210e_coco-256x192.py td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth --out-file vis_results.jpg --draw-heatmap
 ```
 
-# 模型部署
+## 模型部署
 [MMdeploy](https://mmdeploy.readthedocs.io/zh-cn/latest/01-how-to-build/build_from_source.html)
 ```bash
 git clone https://github.com/open-mmlab/mmdeploy --recursive 
